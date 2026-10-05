@@ -4,6 +4,7 @@ const User = require("../models/User");
 const mailSender = require("../utils/mailSender");
 const {courseEnrollmentEmail} = require("../mail/templates/courseEnrollmentEmail");
 const { default: mongoose } = require("mongoose");
+const crypto = require("crypto");
 
 
 
@@ -124,11 +125,14 @@ exports.verifySignature = async (req, res) => {
                 console.log(enrolledCourse);
 
                 //find the student andadd the course to their list enrolled courses me 
-                const enrolledStudent = await User.findOneAndUpdate(
-                                                {_id:userId},
-                                                {$push:{courses:courseId}},
-                                                {new:true},
-                );
+                const enrolledStudent = await User.findByIdAndUpdate(
+                                                                userId,
+                                              { $push: { courses: courseId } },
+                                              { new: true }
+                                            );
+
+console.log("USER ID:", userId);
+console.log("ENROLLED STUDENT:", enrolledStudent);
 
                 console.log(enrolledStudent);
 
