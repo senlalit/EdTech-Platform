@@ -4,4 +4,8 @@
 
 html, body {
     overflow-x: hidden;
-}/* write your css here */
+}
+
+.homepage_bg {
+    background: url("../src/assets/Images/bghome.svg");
+}
