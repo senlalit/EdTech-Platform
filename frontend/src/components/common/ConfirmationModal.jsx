@@ -11,11 +11,13 @@ const ConfirmationModal = ({modalData}) => {
             <p>
                 {modalData.text2}
             </p>
-            <div>
+
+            <div className="flex gap-x-4">
                 <IconBtn 
                     onclick={modalData?.btn1Handler}
                     text={modalData?.btn1Text}
-                    />
+                />
+
                 <button onClick={modalData?.btn2Handler}>
                     {modalData?.btn2Text}
                 </button>    
